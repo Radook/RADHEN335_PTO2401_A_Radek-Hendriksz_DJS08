@@ -21,10 +21,8 @@ createServer({
     routes() {
         this.namespace = "api"
         this.logging = false
-        // this.timing = 2000  // => mock a 2 second delay in server response
 
         this.get("/vans", (schema, request) => {
-            // return new Response(400, {}, {error: "Error fetching data"})
             return schema.vans.all()
         })
 
@@ -34,12 +32,10 @@ createServer({
         })
 
         this.get("/host/vans", (schema, request) => {
-            // Hard-code the hostId for now
             return schema.vans.where({ hostId: "123" })
         })
 
         this.get("/host/vans/:id", (schema, request) => {
-            // Hard-code the hostId for now
             const id = request.params.id
             return schema.vans.findBy({ id, hostId: "123" })
         })
